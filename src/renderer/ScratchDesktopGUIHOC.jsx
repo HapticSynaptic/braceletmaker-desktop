@@ -21,12 +21,10 @@ import {
 import {
     openLoadingProject,
     closeLoadingProject,
-    openTelemetryModal,
     openUpdateModal
 } from 'openblock-gui/src/reducers/modals';
 import {setUpdate} from 'openblock-gui/src/reducers/update';
 
-import analytics, {initialAnalytics} from 'openblock-gui/src/lib/analytics';
 import MessageBoxType from 'openblock-gui/src/lib/message-box.js';
 
 import ElectronStorageHelper from '../common/ElectronStorageHelper';
@@ -43,7 +41,6 @@ const ScratchDesktopGUIHOC = function (WrappedComponent) {
         constructor (props) {
             super(props);
             bindAll(this, [
-                'handleProjectTelemetryEvent',
                 'handleSetTitleFromSave',
                 'handleShowMessageBox',
                 'handleStorageInit',
@@ -91,11 +88,6 @@ const ScratchDesktopGUIHOC = function (WrappedComponent) {
             ipcRenderer.on('setUpdate', (event, args) => {
                 this.props.onSetUpdate(args);
             });
-            ipcRenderer.on('setUserId', (event, args) => {
-                initialAnalytics(args);
-                // Register "base" page view
-                analytics.pageview('/', null, 'desktop');
-            });
             ipcRenderer.on('setPlatform', (event, args) => {
                 this.platform = args;
             });
@@ -120,9 +112,6 @@ const ScratchDesktopGUIHOC = function (WrappedComponent) {
         }
         handleClickInstallDriver () {
             ipcRenderer.send('installDriver');
-        }
-        handleProjectTelemetryEvent (event, metadata) {
-            ipcRenderer.send(event, metadata);
         }
         handleSetTitleFromSave (event, args) {
             this.handleUpdateProjectTitle(args.title);
@@ -187,14 +176,6 @@ const ScratchDesktopGUIHOC = function (WrappedComponent) {
                             id="gui.menuBar.privacyPolicy"
                         />),
                         onClick: () => showPrivacyPolicy()
-                    },
-                    {
-                        title: (<FormattedMessage
-                            defaultMessage="Data settings"
-                            description="Menu bar item for data settings"
-                            id="gui.menuBar.dataSettings"
-                        />),
-                        onClick: () => this.props.onTelemetrySettingsClicked()
                     }
                 ]}
                 onClickLogo={this.handleClickLogo}
@@ -203,7 +184,6 @@ const ScratchDesktopGUIHOC = function (WrappedComponent) {
                 onAbortUpdate={this.handleAbortUpdate}
                 onClickInstallDriver={this.handleClickInstallDriver}
                 onClickClearCache={this.handleClickClearCache}
-                onProjectTelemetryEvent={this.handleProjectTelemetryEvent}
                 onShowMessageBox={this.handleShowMessageBox}
                 onShowPrivacyPolicy={showPrivacyPolicy}
                 onStorageInit={this.handleStorageInit}
@@ -224,7 +204,6 @@ const ScratchDesktopGUIHOC = function (WrappedComponent) {
         onLoadingCompleted: PropTypes.func,
         onLoadingStarted: PropTypes.func,
         onRequestNewProject: PropTypes.func,
-        onTelemetrySettingsClicked: PropTypes.func,
         onSetUpdate: PropTypes.func,
         // using PropTypes.instanceOf(VM) here will cause prop type warnings due to VM mismatch
         vm: GUIComponent.WrappedComponent.propTypes.vm
@@ -260,8 +239,7 @@ const ScratchDesktopGUIHOC = function (WrappedComponent) {
         onSetUpdate: arg => {
             dispatch(setUpdate(arg));
             dispatch(openUpdateModal());
-        },
-        onTelemetrySettingsClicked: () => dispatch(openTelemetryModal())
+        }
     });
 
     return connect(mapStateToProps, mapDispatchToProps)(ScratchDesktopGUIComponent);

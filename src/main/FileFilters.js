@@ -27,6 +27,10 @@ const saveFilters = {
         name: 'OpenBlock Project',
         extensions: ['ob']
     },
+    BM: {
+        name: 'Bracelet Maker Project',
+        extensions: ['bm']
+    },
     Sprite2: {
         name: 'Scratch 2 Sprite',
         extensions: ['sprite2']
@@ -63,12 +67,13 @@ const loadFilters = {
         ]
     },
     AllProjects: {
-        name: 'All OpenBlock Projects',
+        name: 'All Bracelet Maker Projects',
         extensions: [
             ...saveFilters.SB3.extensions,
             ...saveFilters.SB2.extensions,
             ...saveFilters.SB.extensions,
-            ...saveFilters.OB.extensions
+            ...saveFilters.OB.extensions,
+            ...saveFilters.BM.extensions
         ]
     },
     AllSounds: {

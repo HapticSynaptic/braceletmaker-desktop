@@ -3,20 +3,15 @@ directories:
   output: dist
 extraFiles: ['LICENSE', 'LICENSE.ScratchFoundation', 'TRADEMARK', "tools", "external-resources", 'firmwares', "drivers"]
 
-appId: openblock.cc.openblock-desktop
-productName: "OpenBlock Desktop"
+appId: braceletmaker.desktop
+productName: "Bracelet Maker"
 publish:
-  - provider: github
-  - provider: spaces
-    name: openblock
-    path: desktop
-    region: sgp1
 
 fileAssociations:
-  ext: ob
-  name: OpenBlock project file
+  ext: bm
+  name: Bracelet Maker project file
   role: Editor
-  icon: buildResources/OpenBlockFile.ico
+  icon: buildResources/logo.ico
 
 mac:
   category: public.app-category.education
@@ -28,37 +23,22 @@ mac:
         This app requires microphone access when recording sounds or detecting loudness.
   gatekeeperAssess: true
   hardenedRuntime: true
-  icon: buildResources/OpenBlockDesktop.icns
+  icon: buildResources/logo.icns
   provisioningProfile: embedded.provisionprofile
-  artifactName: "OpenBlock-Desktop_${version}.${ext}"
+  artifactName: "Bracelet_Maker-${version}.${ext}"
   target:
     - dmg
-    # - mas
 dmg:
-  title: "OpenBlock-Desktop_${version}"
-# mas:
-#   category: public.app-category.education
-#   entitlements: buildResources/entitlements.mas.plist
-#   entitlementsInherit: buildResources/entitlements.mas.inherit.plist
-#   hardenedRuntime: false
-#   icon: buildResources/OpenBlockDesktop.icns
-# masDev:
-#   type: development
-#   provisioningProfile: mas-dev.provisionprofile
+  title: "Bracelet_Maker-${version}"
 
 win:
-  icon: buildResources/OpenBlockDesktop.ico
+  icon: buildResources/logo.ico
   target:
-    # - appx
     - nsis
-# appx:
-#   identityName: "OpenblockTeam.OpenblockDesktop
-#   publisherDisplayName: "OpenBlock Team"
-#   publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
-#   artifactName: "OpenBlock ${version}.${ext}"
+
 nsis:
   oneClick: false # allow user to choose per-user or per-machine
   allowToChangeInstallationDirectory: true
   include: buildResources/installer.nsh
 #   license: LICENSE
-  artifactName: "OpenBlock-Desktop_${version}.${ext}"
+  artifactName: "Bracelet_Maker-${version}.${ext}"

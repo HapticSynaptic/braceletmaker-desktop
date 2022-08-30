@@ -7,7 +7,6 @@ import {promisify} from 'util';
 
 import argv from './argv';
 import {getFilterForExtension} from './FileFilters';
-import telemetry from './OpenblockDesktopTelemetry';
 import Updater from './OpenblockDesktopUpdater';
 import DesktopLink from './OpenblockDesktopLink.js';
 import MacOSMenu from './MacOSMenu';
@@ -29,8 +28,6 @@ app.allowRendererProcessReuse = true;
 
 // allow connect to localhost
 app.commandLine.appendSwitch('allow-insecure-localhost', 'true');
-
-telemetry.appWasOpened();
 
 // const defaultSize = {width: 1096, height: 715}; // minimum
 const defaultSize = {width: 1280, height: 800}; // good for MAS screenshots
@@ -73,7 +70,7 @@ const displayPermissionDeniedWarning = (browserWindow, permissionType) => {
         message = formatMessage({
             id: 'index.cameraPermissionDeniedMessage',
             default: 'Permission to use the camera has been denied. ' +
-                'OpenBlock will not be able to take a photo or use video sensing blocks.',
+                'Bracelet Maker will not be able to take a photo or use video sensing blocks.',
             description: 'message for camera permission denied'
         });
         break;
@@ -86,7 +83,7 @@ const displayPermissionDeniedWarning = (browserWindow, permissionType) => {
         message = formatMessage({
             id: 'index.microphonePermissionDeniedMessage',
             default: 'Permission to use the microphone has been denied. ' +
-                    'OpenBlock will not be able to record sounds or detect loudness.',
+                    'Bracelet Maker will not be able to record sounds or detect loudness.',
             description: 'message for microphone permission denied'
         });
         break;
@@ -108,14 +105,14 @@ const displayPermissionDeniedWarning = (browserWindow, permissionType) => {
     case 'darwin':
         instructions = formatMessage({
             id: 'index.darwinPermissionDeniedInstructions',
-            default: 'To change OpenBlock permissions, please check "Security & Privacy" in System Preferences.',
+            default: 'To change Bracelet Maker permissions, please check "Security & Privacy" in System Preferences.',
             description: 'prompt for fix darwin permission denied instructions'
         });
         break;
     default:
         instructions = formatMessage({
             id: 'index.permissionDeniedInstructions',
-            default: 'To change OpenBlock permissions, please check your system settings and restart OpenBlock.',
+            default: 'To change Bracelet Maker permissions, please check your system settings and restart Bracelet Maker.',
             description: 'prompt for fix permission denied instructions'
         });
         break;
@@ -287,7 +284,7 @@ const createLoadingWindow = () => {
         transparent: true,
         hasShadow: false,
         search: 'route=loading',
-        title: `Loding ${productName} ${version}`
+        title: `Loading ${productName} ${version}`
     });
 
     window.once('ready-to-show', () => {
@@ -299,7 +296,7 @@ const createLoadingWindow = () => {
 
 const getIsProjectSave = downloadItem => {
     switch (downloadItem.getMimeType()) {
-    case 'application/x.openblock.ob':
+    case 'application/x.braceletmaker.bm':
         return true;
     }
     return false;
@@ -307,6 +304,7 @@ const getIsProjectSave = downloadItem => {
 
 const createMainWindow = () => {
     const window = createWindow({
+        backgroundColor: '#96f',
         width: defaultSize.width,
         height: defaultSize.height,
         title: `${productName} ${version}` // something like "Scratch 3.14"
@@ -343,23 +341,15 @@ const createMainWindow = () => {
             downloadItem.on('done', async (doneEvent, doneState) => {
                 try {
                     if (doneState !== 'completed') {
-                        // The download was canceled or interrupted. Cancel the telemetry event and delete the file.
+                        // The download was canceled or interrupted. Delete the file.
                         throw new Error(`save ${doneState}`); // "save cancelled" or "save interrupted"
                     }
                     await fs.move(tempPath, userChosenPath, {overwrite: true});
                     if (isProjectSave) {
                         const newProjectTitle = path.basename(userChosenPath, extName);
                         webContents.send('setTitleFromSave', {title: newProjectTitle});
-
-                        // "setTitleFromSave" will set the project title but GUI has already reported the telemetry
-                        // event using the old title. This call lets the telemetry client know that the save was
-                        // actually completed and the event should be committed to the event queue with this new title.
-                        telemetry.projectSaveCompleted(newProjectTitle);
                     }
                 } catch (e) {
-                    if (isProjectSave) {
-                        telemetry.projectSaveCanceled();
-                    }
                     // don't clean up until after the message box to allow troubleshooting / recovery
                     await dialog.showMessageBox(window, {
                         type: 'error',
@@ -384,9 +374,6 @@ const createMainWindow = () => {
             });
         } else {
             downloadItem.cancel();
-            if (isProjectSave) {
-                telemetry.projectSaveCanceled();
-            }
         }
     });
 
@@ -396,13 +383,13 @@ const createMainWindow = () => {
             type: 'question',
             message: formatMessage({
                 id: 'index.questionLeave',
-                default: 'Leave Openblock?',
-                description: 'prompt for leave Openblock'
+                default: 'Leave Bracelet Maker?',
+                description: 'prompt for leave Bracelet Maker'
             }),
             detail: formatMessage({
                 id: 'index.questionLeaveDetail',
                 default: 'Any unsaved changes will be lost.',
-                description: 'detail prompt for leave Openblock'
+                description: 'detail prompt for leave Bracelet Maker'
             }),
             buttons: [
                 formatMessage({
@@ -472,10 +459,6 @@ if (process.platform === 'darwin') {
 // quit application when all windows are closed
 app.on('window-all-closed', () => {
     app.quit();
-});
-
-app.on('will-quit', () => {
-    telemetry.appWillClose();
 });
 
 app.on('activate', () => {
@@ -552,7 +535,6 @@ app.on('ready', () => {
                 delete _windows.loading;
             })
             .catch(async e => {
-            // TODO: report error via telemetry
                 await dialog.showMessageBox(_windows.loading, {
                     type: 'error',
                     title: formatMessage({
@@ -565,7 +547,7 @@ app.on('ready', () => {
                         default: 'Initialize resources failed',
                         description: 'prompt for initialize resources failed'
                     })}`,
-                    detail: e
+                    detail: e.message
                 });
 
                 app.exit();

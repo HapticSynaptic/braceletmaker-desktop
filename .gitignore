@@ -19,9 +19,6 @@ npm-*
 /.opt-in
 /*.provisionprofile
 
-# don't store the assets downloaded with the `fetch` script
-/static
-
 # Temporary resource
 /external-resources
 /tools

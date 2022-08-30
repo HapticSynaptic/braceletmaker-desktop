@@ -1,13 +1,17 @@
 {
-  "name": "openblock-desktop",
-  "productName": "OpenBlock Desktop",
-  "description": "OpenBlock as a self-contained desktop application",
-  "author": "Openblock.cc Team",
-  "version": "2.3.1",
+  "name": "@hapticsynaptic/bracelet-maker",
+  "productName": "Bracelet Maker",
+  "description": "Bracelet Maker is a programmable robot toy tailored to girls' interests",
+  "author": {
+    "name": "HapticSynaptic",
+    "email": "TODO:",
+    "url": "https://hapticsynaptic.com"
+  },
+  "version": "1.1.0",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
-    "clean": "rimraf ./dist ./static ./external-resources ./tools ./translations ./firmwares ./drivers",
+    "clean": "rimraf ./dist ./external-resources ./tools ./translations ./firmwares ./drivers",
     "i18n:src": "mkdirp translations/core && format-message extract --out-file translations/core/en.json src/main/**.js",
     "i18n:push": "tx-push-src openblock-editor desktop translations/core/en.json",
     "start": "mkdirp ./dist && electron-webpack dev --bail --display-error-details --env.minify=false --no-progress",
@@ -16,8 +20,7 @@
     "fetch:exts": "rimraf ./external-resources && node ./node_modules/openblock-resource/script/download.js  --repo=openblockcc/external-resources-v2",
     "fetch:firmwares": "rimraf ./firmwares && node ./node_modules/openblock-link/script/download-firmwares.js",
     "fetch:tools": "rimraf ./tools && node ./node_modules/openblock-link/script/download-tools.js",
-    "fetch:static": "rimraf ./static && mkdirp ./static && git clone https://github.com/openblockcc/openblock-assets.git static && rimraf ./static/.git",
-    "fetch:all": "npm run fetch:drivers && npm run fetch:exts && npm run fetch:firmwares && npm run fetch:tools && npm run fetch:static",
+    "fetch:all": "npm run fetch:drivers && npm run fetch:exts && npm run fetch:firmwares && npm run fetch:tools",
     "build": "npm run build:dev",
     "build:dev": "npm run compile && npm run doBuild -- --mode=dev",
     "build:dir": "npm run compile && npm run doBuild -- --mode=dir",
@@ -32,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/openblockcc/openblock-desktop.git"
+    "url": "github:haptic-synaptic/bracelet-maker"
   },
   "dependencies": {
     "bytes": "^3.1.2",
@@ -58,7 +61,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "download-github-release": "^0.3.2",
     "electron": "^15.3.1",
-    "electron-builder": "^22.13.1",
+    "electron-builder": "^23.0.2",
     "electron-devtools-installer": "^3.2.0",
     "electron-fetch": "^1.7.4",
     "electron-log": "^4.4.6",

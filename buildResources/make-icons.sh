@@ -1,8 +1,10 @@
 #!/bin/bash
-SRC=../src/icon/OpenBlockDesktop.svg
-OUT_ICONSET=OpenBlockDesktop.iconset
-OUT_ICNS=OpenBlockDesktop.icns
-OUT_ICO=OpenBlockDesktop.ico
+
+# the .svg file needs to have width and height attributes set to "1024" otherwise the icons will be pixelated
+SRC=mac-icon.svg
+OUT_ICONSET=BraceletMaker.iconset
+OUT_ICNS=logo.icns
+OUT_ICO=BraceletMaker.ico
 TMP_ICO=tmp
 
 ICO_BASIC_SIZES="16 24 32 48 256"
@@ -40,6 +42,7 @@ if command -v convert >/dev/null 2>&1; then
             resize "${SIZE2}" "${SIZE2}" "${SRC}" "${OUT_ICONSET}/icon_${SIZE}x${SIZE}@2x.png" -density 144 -units PixelsPerInch
         done
         iconutil -c icns --output "${OUT_ICNS}" "${OUT_ICONSET}"
+        rm -R "${OUT_ICONSET}"
     else
         echo "iconutil is not available - skipping ICNS and ICONSET"
     fi
@@ -51,13 +54,16 @@ if command -v convert >/dev/null 2>&1; then
     done
     # Asking for "Zip" compression actually results in PNG compression
     convert "${TMP_ICO}"/icon_*.png -colorspace sRGB -compress Zip "${OUT_ICO}"
+    rm -R "${TMP_ICO}"
 
     # Windows AppX
-    mkdir -p "appx"
+    # TODO: store "appx" in a variable??
+    mkdir -p appx
     resize 44 44 "${SRC}" 'appx/Square44x44Logo.png'
     resize 50 50 "${SRC}" 'appx/StoreLogo.png'
     resize 150 150 "${SRC}" 'appx/Square150x150Logo.png'
     resize 310 150 "${SRC}" 'appx/Wide310x150Logo.png'
+    rm -R appx
 else
     echo "ImageMagick is not available - cannot convert icons"
 fi
