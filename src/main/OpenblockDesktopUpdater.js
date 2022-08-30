@@ -7,7 +7,7 @@ import fetch from 'electron-fetch';
 
 import formatMessage from 'format-message';
 import parseReleaseMessage from 'openblock-parse-release-message';
-import {UPDATE_TARGET, UPDATE_MODAL_STATE} from 'openblock-gui/src/lib/update-state.js';
+import {UPDATE_TARGET, UPDATE_MODAL_STATE} from 'braceletmaker-gui/src/lib/update-state.js';
 import {AbortController} from 'node-abort-controller';
 class OpenblockDesktopUpdater {
     constructor (webContents, resourceServer) {
@@ -15,18 +15,6 @@ class OpenblockDesktopUpdater {
         this._resourceServer = resourceServer;
 
         autoUpdater.autoDownload = false;
-
-        this.isCN = app.getLocaleCountryCode() === 'CN';
-
-        if (this.isCN) {
-            console.log('INFO: The current system setting region is China, use DigitalOcean as the update server.');
-            autoUpdater.setFeedURL({
-                provider: 'spaces',
-                name: 'openblock',
-                path: 'desktop',
-                region: 'sgp1'
-            });
-        }
 
         const appPath = app.getAppPath();
         if (appPath.search(/main/g) !== -1) {
@@ -54,37 +42,13 @@ class OpenblockDesktopUpdater {
     applicationAvailable (info) {
         this.updateTarget = UPDATE_TARGET.application;
 
-        if (this.isCN) {
-            const url = `https://openblock.sgp1.digitaloceanspaces.com/desktop/latestRelease.json`;
-
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    this.reportUpdateState({
-                        phase: UPDATE_MODAL_STATE.applicationUpdateAvailable,
-                        info: {
-                            version: info.version,
-                            message: parseReleaseMessage(data.body)
-                        }
-                    });
-                })
-                .catch(err => {
-                    this.reportUpdateState({
-                        phase: UPDATE_MODAL_STATE.error,
-                        info: {
-                            message: err.message
-                        }
-                    });
-                });
-        } else {
-            this.reportUpdateState({
-                phase: UPDATE_MODAL_STATE.applicationUpdateAvailable,
-                info: {
-                    version: info.version,
-                    message: parseReleaseMessage(info.releaseNotes, {html: true})
-                }
-            });
-        }
+        this.reportUpdateState({
+            phase: UPDATE_MODAL_STATE.applicationUpdateAvailable,
+            info: {
+                version: info.version,
+                message: parseReleaseMessage(info.releaseNotes, {html: true})
+            }
+        });
     }
 
     resourceAvailable (info) {

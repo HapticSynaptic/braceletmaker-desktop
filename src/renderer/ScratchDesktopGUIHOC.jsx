@@ -6,7 +6,7 @@ import omit from 'lodash.omit';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import GUIComponent from 'openblock-gui/src/components/gui/gui.jsx';
+import GUIComponent from 'braceletmaker-gui/src/components/gui/gui.jsx';
 import {FormattedMessage} from 'react-intl';
 
 import {
@@ -17,15 +17,15 @@ import {
     requestNewProject,
     requestProjectUpload,
     setProjectId
-} from 'openblock-gui/src/reducers/project-state';
+} from 'braceletmaker-gui/src/reducers/project-state';
 import {
     openLoadingProject,
     closeLoadingProject,
     openUpdateModal
-} from 'openblock-gui/src/reducers/modals';
-import {setUpdate} from 'openblock-gui/src/reducers/update';
+} from 'braceletmaker-gui/src/reducers/modals';
+import {setUpdate} from 'braceletmaker-gui/src/reducers/update';
 
-import MessageBoxType from 'openblock-gui/src/lib/message-box.js';
+import MessageBoxType from 'braceletmaker-gui/src/lib/message-box.js';
 
 import ElectronStorageHelper from '../common/ElectronStorageHelper';
 

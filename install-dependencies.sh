@@ -1,122 +1,122 @@
 #!/bin/zsh
 
 # clone dependency repos
-echo "git clone https://github.com/openblockcc/openblock-l10n.git ~/Desktop/bracelet-maker"
-git clone https://github.com/openblockcc/openblock-l10n.git ~/Desktop/bracelet-maker
-echo "git clone https://github.com/openblockcc/openblock-blocks.git ~/Desktop/bracelet-maker"
-git clone https://github.com/openblockcc/openblock-blocks.git ~/Desktop/bracelet-maker
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-l10n.git ~/Desktop/braceletmaker"
+git clone https://github.com/HapticSynaptic/braceletmaker-l10n.git ~/Desktop/braceletmaker
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-blocks.git ~/Desktop/braceletmaker"
+git clone https://github.com/HapticSynaptic/braceletmaker-blocks.git ~/Desktop/braceletmaker
 # research proper branch to check out
-echo "git clone https://github.com/openblockcc/openblock-vm.git ~/Desktop/bracelet-maker"
-git clone https://github.com/openblockcc/openblock-vm.git ~/Desktop/bracelet-maker
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-vm.git ~/Desktop/braceletmaker"
+git clone https://github.com/HapticSynaptic/braceletmaker-vm.git ~/Desktop/braceletmaker
 # 0.1.0-prerelease.20211011093704 tag
-echo "git clone https://github.com/openblockcc/openblock-gui.git ~/Desktop/bracelet-maker"
-git clone https://github.com/openblockcc/openblock-gui.git ~/Desktop/bracelet-maker
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-gui.git ~/Desktop/braceletmaker"
+git clone https://github.com/HapticSynaptic/braceletmaker-gui.git ~/Desktop/braceletmaker
 # research proper branch to check out
-echo "git clone https://github.com/LLK/scratch-paint.git ~/Desktop/bracelet-maker"
-git clone https://github.com/LLK/scratch-paint.git ~/Desktop/bracelet-maker
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-paint.git ~/Desktop/braceletmaker"
+git clone https://github.com/HapticSynaptic/braceletmaker-paint.git ~/Desktop/braceletmaker
 
 # install yarn
 echo "corepack enable"
 corepack enable
 
-echo "cd ~/Desktop/bracelet-maker/GitHub/openblock-l10n"
-cd ~/Desktop/bracelet-maker/GitHub/openblock-l10n
-echo "[openblock-l10n] rm -rf node_modules"
+echo "cd ~/Desktop/braceletmaker/braceletmaker-l10n"
+cd ~/Desktop/braceletmaker/braceletmaker-l10n
+echo "[braceletmaker-l10n] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
-echo "[openblock-l10n] git reset -q HEAD -- package-lock.json"
+echo "[braceletmaker-l10n] git reset -q HEAD -- package-lock.json"
 git reset -q HEAD -- package-lock.json
 # revert package-lock.json
-echo "[openblock-l10n] git checkout -q -- package-lock.json"
+echo "[braceletmaker-l10n] git checkout -q -- package-lock.json"
 git checkout -q -- package-lock.json
-echo "[openblock-l10n] npm install"
+echo "[braceletmaker-l10n] npm install"
 npm install
-echo "[openblock-l10n] npm run build"
+echo "[braceletmaker-l10n] npm run build"
 npm run build
-echo "[openblock-l10n] yarn link"
+echo "[braceletmaker-l10n] yarn link"
 yarn link
 
-echo "cd ~/Desktop/bracelet-maker/GitHub/openblock-blocks"
-cd ~/Desktop/bracelet-maker/GitHub/openblock-blocks
-echo "[openblock-blocks] rm -rf node_modules"
+echo "cd ~/Desktop/braceletmaker/braceletmaker-blocks"
+cd ~/Desktop/braceletmaker/braceletmaker-blocks
+echo "[braceletmaker-blocks] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
-echo "[openblock-blocks] git reset -q HEAD -- package-lock.json"
+echo "[braceletmaker-blocks] git reset -q HEAD -- package-lock.json"
 git reset -q HEAD -- package-lock.json
 # revert package-lock.json
-echo "[openblock-blocks] git checkout -q -- package-lock.json"
+echo "[braceletmaker-blocks] git checkout -q -- package-lock.json"
 git checkout -q -- package-lock.json
-echo "[openblock-blocks] npm install"
+echo "[braceletmaker-blocks] npm install"
 npm install
-echo "[openblock-blocks] yarn link openblock-l10n"
-yarn link openblock-l10n
-echo "[openblock-blocks] yarn link"
+echo "[braceletmaker-blocks] yarn link braceletmaker-l10n"
+yarn link braceletmaker-l10n
+echo "[braceletmaker-blocks] yarn link"
 yarn link
 
-echo "cd ~/Desktop/bracelet-maker/GitHub/openblock-vm"
-cd ~/Desktop/bracelet-maker/GitHub/openblock-vm
-echo "[openblock-vm] rm -rf node_modules"
+echo "cd ~/Desktop/braceletmaker/braceletmaker-vm"
+cd ~/Desktop/braceletmaker/braceletmaker-vm
+echo "[braceletmaker-vm] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
-echo "[openblock-vm] git reset -q HEAD -- package-lock.json"
+echo "[braceletmaker-vm] git reset -q HEAD -- package-lock.json"
 git reset -q HEAD -- package-lock.json
 # revert package-lock.json
-echo "[openblock-vm] git checkout -q -- package-lock.json"
+echo "[braceletmaker-vm] git checkout -q -- package-lock.json"
 git checkout -q -- package-lock.json
-echo "[openblock-vm] npm install"
+echo "[braceletmaker-vm] npm install"
 npm install
-echo "[openblock-vm] yarn link openblock-l10n"
-yarn link openblock-l10n
-echo "[openblock-vm] yarn link"
+echo "[braceletmaker-vm] yarn link braceletmaker-l10n"
+yarn link braceletmaker-l10n
+echo "[braceletmaker-vm] yarn link"
 yarn link
 
-echo "cd ~/Desktop/bracelet-maker/GitHub/scratch-paint"
-cd ~/Desktop/bracelet-maker/GitHub/scratch-paint
-echo "[scratch-paint] rm -rf node_modules"
+echo "cd ~/Desktop/braceletmaker/braceletmaker-paint"
+cd ~/Desktop/braceletmaker/braceletmaker-paint
+echo "[braceletmaker-paint] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
-echo "[scratch-paint] git reset -q HEAD -- package-lock.json"
+echo "[braceletmaker-paint] git reset -q HEAD -- package-lock.json"
 git reset -q HEAD -- package-lock.json
 # revert package-lock.json
-echo "[scratch-paint] git checkout -q -- package-lock.json"
+echo "[braceletmaker-paint] git checkout -q -- package-lock.json"
 git checkout -q -- package-lock.json
-echo "[scratch-paint] npm install"
+echo "[braceletmaker-paint] npm install"
 npm install
-echo "[scratch-paint] npm run build"
+echo "[braceletmaker-paint] npm run build"
 npm run build
-echo "[scratch-paint] yarn link"
+echo "[braceletmaker-paint] yarn link"
 yarn link
 
-echo "cd ~/Desktop/bracelet-maker/GitHub/openblock-gui"
-cd ~/Desktop/bracelet-maker/GitHub/openblock-gui
-echo "[openblock-gui] rm -rf node_modules"
+echo "cd ~/Desktop/braceletmaker/braceletmaker-gui"
+cd ~/Desktop/braceletmaker/braceletmaker-gui
+echo "[braceletmaker-gui] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
-echo "[openblock-gui] git reset -q HEAD -- package-lock.json"
+echo "[braceletmaker-gui] git reset -q HEAD -- package-lock.json"
 git reset -q HEAD -- package-lock.json
 # revert package-lock.json
-echo "[openblock-gui] git checkout -q -- package-lock.json"
+echo "[braceletmaker-gui] git checkout -q -- package-lock.json"
 git checkout -q -- package-lock.json
-echo "[openblock-gui] npm install"
+echo "[braceletmaker-gui] npm install"
 npm install
-echo "[openblock-gui] yarn link openblock-l10n openblock-blocks openblock-vm scratch-paint"
-yarn link openblock-l10n openblock-blocks openblock-vm scratch-paint
-echo "[openblock-gui] yarn link"
+echo "[braceletmaker-gui] yarn link braceletmaker-l10n braceletmaker-blocks braceletmaker-vm braceletmaker-paint"
+yarn link braceletmaker-l10n braceletmaker-blocks braceletmaker-vm braceletmaker-paint
+echo "[braceletmaker-gui] yarn link"
 yarn link
 
-echo "cd ~/Desktop/bracelet-maker/GitHub/openblock-desktop"
-cd ~/Desktop/bracelet-maker/GitHub/openblock-desktop
-echo "[openblock-desktop] npm install electron-builder@23.0.2"
+echo "cd ~/Desktop/braceletmaker/braceletmaker-desktop"
+cd ~/Desktop/braceletmaker/braceletmaker-desktop
+echo "[braceletmaker-desktop] npm install electron-builder@23.0.2"
 npm install electron-builder@23.0.2
-echo "[openblock-desktop] rm -rf node_modules"
+echo "[braceletmaker-desktop] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
-echo "[openblock-desktop] git reset -q HEAD -- package-lock.json"
+echo "[braceletmaker-desktop] git reset -q HEAD -- package-lock.json"
 git reset -q HEAD -- package-lock.json
 # revert package-lock.json
-echo "[openblock-desktop] git checkout -q -- package-lock.json"
+echo "[braceletmaker-desktop] git checkout -q -- package-lock.json"
 git checkout -q -- package-lock.json
-echo "[openblock-desktop] npm install"
+echo "[braceletmaker-desktop] npm install"
 npm install
-echo "[openblock-desktop] yarn link openblock-l10n openblock-gui"
-yarn link openblock-l10n openblock-gui
+echo "[braceletmaker-desktop] yarn link braceletmaker-l10n braceletmaker-gui"
+yarn link braceletmaker-l10n braceletmaker-gui

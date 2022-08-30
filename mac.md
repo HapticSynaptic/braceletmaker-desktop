@@ -109,13 +109,13 @@ eval "$(pyenv init --path)"
 1. Create a new folder on Desktop for the app source code:
 
 ```
-mkdir ~/Desktop/bracelet-maker
+mkdir ~/Desktop/HapticSynaptic
 ```
 
 2. Clone the repo in the newly created folder:
 
 ```
-cd ~/Desktop/bracelet-maker && git clone https://github.com/openblockcc/openblock-desktop.git
+cd ~/Desktop/HapticSynaptic && git clone https://github.com/HapticSynaptic/braceletmaker-desktop.git
 ```
 
 3. Switch to the latest version tag. At the time of writing the latest version is 2.3.1. To do that run:
@@ -131,17 +131,17 @@ git checkout tags/v2.3.1
 npm install && npm run fetch:all
 ```
 
-6. Move the `external-resources`, `firmwares`, and `tools` folders from within the repo folder one level up i.e. `~/Desktop/bracelet-maker`.
+6. Move the `external-resources`, `firmwares`, and `tools` folders from within the repo folder one level up i.e. `~/Desktop/HapticSynaptic`.
 7. Create "Data" folder in `/Users/temp/Library/Application Support/Electron`. Copy the `external-resources` folder inside it.
 
 ## Running the development version of the app
 
-To make changes to `openblock-gui`, `openblock-blocks`, and `openblock-vm` while working on `openblock-desktop` you need to override `package.json` versions of these packages with local repos. These are the steps:
+To make changes to `braceletmaker-gui`, `braceletmaker-blocks`, and `braceletmaker-vm` while working on `braceletmaker-desktop` you need to override `package.json` versions of these packages with local repos. These are the steps:
 
 1. Run `install-dependencies.sh` shell file in the Terminal. Feel free to open the file to see what it does.
 
 ```
-zsh ~/Desktop/bracelet-maker/openblock-desktop/install-dependencies.sh
+zsh ~/Desktop/HapticSynaptic/braceletmaker-desktop/install-dependencies.sh
 ```
 
 2. Run `npm run build:dev` to prep the "dist" folder for development. You will need to re-run this command after every production build in order to return "dist" folder to development state.
@@ -156,7 +156,7 @@ zsh ~/Desktop/bracelet-maker/openblock-desktop/install-dependencies.sh
 npm install electron-builder@23.0.2
 ```
 
-2. Generate `.dmg` at `~/Desktop/bracelet-maker/openblock-desktop/dist`.
+2. Generate `.dmg` at `~/Desktop/HapticSynaptic/braceletmaker-desktop/dist`.
 
 ```
 npm run dist

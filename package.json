@@ -1,13 +1,9 @@
 {
-  "name": "@hapticsynaptic/bracelet-maker",
+  "name": "braceletmaker-desktop",
   "productName": "Bracelet Maker",
   "description": "Bracelet Maker is a programmable robot toy tailored to girls' interests",
-  "author": {
-    "name": "HapticSynaptic",
-    "email": "TODO:",
-    "url": "https://hapticsynaptic.com"
-  },
-  "version": "1.1.0",
+  "author": "Haptic Synaptic",
+  "version": "1.2.0",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
@@ -35,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github:haptic-synaptic/bracelet-maker"
+    "url": "github:HapticSynaptic/braceletmaker-desktop"
   },
   "dependencies": {
     "bytes": "^3.1.2",
@@ -57,6 +53,8 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-react-intl": "^7.5.7",
+    "braceletmaker-gui": "1.2.0",
+    "braceletmaker-l10n": "1.2.0",
     "compare-versions": "^3.6.0",
     "copy-webpack-plugin": "^5.1.1",
     "download-github-release": "^0.3.2",
@@ -86,8 +84,6 @@
     "nets": "^3.2.0",
     "node-abort-controller": "^3.0.1",
     "node-fetch": "^3.2.1",
-    "openblock-gui": "github:openblockcc/openblock-gui#openblock-desktop-v2.3.1",
-    "openblock-l10n": "^3.10.20220501071455",
     "openblock-parse-release-message": "0.0.4",
     "os-locale": "^5.0.0",
     "react": "^16.14.0",

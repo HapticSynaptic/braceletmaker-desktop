@@ -1,8 +1,8 @@
 import React from 'react';
 import {compose} from 'redux';
-import GUI from 'openblock-gui/src/index';
+import GUI from 'braceletmaker-gui/src/index';
 
-import AppStateHOC from 'openblock-gui/src/lib/app-state-hoc.jsx';
+import AppStateHOC from 'braceletmaker-gui/src/lib/app-state-hoc.jsx';
 
 import ScratchDesktopGUIHOC from './ScratchDesktopGUIHOC.jsx';
 import styles from './app.css';
