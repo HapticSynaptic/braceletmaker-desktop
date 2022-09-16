@@ -22,15 +22,15 @@ module.exports = defaultConfig =>
             ],
             plugins: [
                 new CopyWebpackPlugin([{
-                    from: path.join(getModulePath('braceletmaker-blocks'), 'media'),
+                    from: path.join(getModulePath('@hapticsynaptic/braceletmaker-blocks'), 'media'),
                     to: 'static/blocks-media'
                 }]),
                 new CopyWebpackPlugin([{
                     from: 'extension-worker.{js,js.map}',
-                    context: path.join(getModulePath('braceletmaker-vm'), 'dist', 'web')
+                    context: path.join(getModulePath('@hapticsynaptic/braceletmaker-vm'), 'dist', 'web')
                 }]),
                 new CopyWebpackPlugin([{
-                    from: path.join(getModulePath('braceletmaker-gui'), 'src', 'lib', 'libraries', '*.json'),
+                    from: path.join(getModulePath('@hapticsynaptic/braceletmaker-gui'), 'src', 'lib', 'libraries', '*.json'),
                     to: 'static/libraries',
                     flatten: true
                 }])

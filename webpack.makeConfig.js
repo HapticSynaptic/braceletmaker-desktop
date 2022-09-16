@@ -137,7 +137,7 @@ const makeConfig = function (defaultConfig, options) {
             alias: {
                 // act like scratch-gui has this line in its package.json:
                 //   "browser": "./src/index.js"
-                'braceletmaker-gui$': path.resolve(__dirname, 'node_modules', 'braceletmaker-gui', 'src', 'index.js')
+                '@hapticsynaptic/braceletmaker-gui$': path.resolve(__dirname, 'node_modules', '@hapticsynaptic/braceletmaker-gui', 'src', 'index.js')
             }
         }
     });

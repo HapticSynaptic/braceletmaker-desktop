@@ -16,7 +16,7 @@ import {productName, version} from '../../package.json';
 import {v4 as uuidv4} from 'uuid';
 import ElectronStore from 'electron-store';
 import formatMessage from 'format-message';
-import locales from 'braceletmaker-l10n/locales/desktop-msgs';
+import locales from '@hapticsynaptic/braceletmaker-l10n/locales/desktop-msgs';
 
 const storage = new ElectronStore();
 const desktopLink = new DesktopLink();

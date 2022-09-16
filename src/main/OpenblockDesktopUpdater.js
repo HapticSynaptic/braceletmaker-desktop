@@ -7,7 +7,7 @@ import fetch from 'electron-fetch';
 
 import formatMessage from 'format-message';
 import parseReleaseMessage from 'openblock-parse-release-message';
-import {UPDATE_TARGET, UPDATE_MODAL_STATE} from 'braceletmaker-gui/src/lib/update-state.js';
+import {UPDATE_TARGET, UPDATE_MODAL_STATE} from '@hapticsynaptic/braceletmaker-gui/src/lib/update-state.js';
 import {AbortController} from 'node-abort-controller';
 class OpenblockDesktopUpdater {
     constructor (webContents, resourceServer) {
