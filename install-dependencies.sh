@@ -1,26 +1,23 @@
 #!/bin/zsh
 
 # clone dependency repos
-echo "git clone https://github.com/HapticSynaptic/braceletmaker-l10n.git ~/Desktop/braceletmaker"
-git clone https://github.com/HapticSynaptic/braceletmaker-l10n.git ~/Desktop/braceletmaker
-echo "git clone https://github.com/HapticSynaptic/braceletmaker-blocks.git ~/Desktop/braceletmaker"
-git clone https://github.com/HapticSynaptic/braceletmaker-blocks.git ~/Desktop/braceletmaker
-# research proper branch to check out
-echo "git clone https://github.com/HapticSynaptic/braceletmaker-vm.git ~/Desktop/braceletmaker"
-git clone https://github.com/HapticSynaptic/braceletmaker-vm.git ~/Desktop/braceletmaker
-# 0.1.0-prerelease.20211011093704 tag
-echo "git clone https://github.com/HapticSynaptic/braceletmaker-gui.git ~/Desktop/braceletmaker"
-git clone https://github.com/HapticSynaptic/braceletmaker-gui.git ~/Desktop/braceletmaker
-# research proper branch to check out
-echo "git clone https://github.com/HapticSynaptic/braceletmaker-paint.git ~/Desktop/braceletmaker"
-git clone https://github.com/HapticSynaptic/braceletmaker-paint.git ~/Desktop/braceletmaker
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-l10n.git ~/Desktop/HapticSynaptic"
+git clone https://github.com/HapticSynaptic/braceletmaker-l10n.git ~/Desktop/HapticSynaptic
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-blocks.git ~/Desktop/HapticSynaptic"
+git clone https://github.com/HapticSynaptic/braceletmaker-blocks.git ~/Desktop/HapticSynaptic
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-vm.git ~/Desktop/HapticSynaptic"
+git clone https://github.com/HapticSynaptic/braceletmaker-vm.git ~/Desktop/HapticSynaptic
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-gui.git ~/Desktop/HapticSynaptic"
+git clone https://github.com/HapticSynaptic/braceletmaker-gui.git ~/Desktop/HapticSynaptic
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-paint.git ~/Desktop/HapticSynaptic"
+git clone https://github.com/HapticSynaptic/braceletmaker-paint.git ~/Desktop/HapticSynaptic
 
 # install yarn
 echo "corepack enable"
 corepack enable
 
-echo "cd ~/Desktop/braceletmaker/braceletmaker-l10n"
-cd ~/Desktop/braceletmaker/braceletmaker-l10n
+echo "cd ~/Desktop/HapticSynaptic/braceletmaker-l10n"
+cd ~/Desktop/HapticSynaptic/braceletmaker-l10n
 echo "[braceletmaker-l10n] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
@@ -36,8 +33,8 @@ npm run build
 echo "[braceletmaker-l10n] yarn link"
 yarn link
 
-echo "cd ~/Desktop/braceletmaker/braceletmaker-blocks"
-cd ~/Desktop/braceletmaker/braceletmaker-blocks
+echo "cd ~/Desktop/HapticSynaptic/braceletmaker-blocks"
+cd ~/Desktop/HapticSynaptic/braceletmaker-blocks
 echo "[braceletmaker-blocks] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
@@ -53,8 +50,8 @@ yarn link braceletmaker-l10n
 echo "[braceletmaker-blocks] yarn link"
 yarn link
 
-echo "cd ~/Desktop/braceletmaker/braceletmaker-vm"
-cd ~/Desktop/braceletmaker/braceletmaker-vm
+echo "cd ~/Desktop/HapticSynaptic/braceletmaker-vm"
+cd ~/Desktop/HapticSynaptic/braceletmaker-vm
 echo "[braceletmaker-vm] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
@@ -70,8 +67,8 @@ yarn link braceletmaker-l10n
 echo "[braceletmaker-vm] yarn link"
 yarn link
 
-echo "cd ~/Desktop/braceletmaker/braceletmaker-paint"
-cd ~/Desktop/braceletmaker/braceletmaker-paint
+echo "cd ~/Desktop/HapticSynaptic/braceletmaker-paint"
+cd ~/Desktop/HapticSynaptic/braceletmaker-paint
 echo "[braceletmaker-paint] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
@@ -87,8 +84,8 @@ npm run build
 echo "[braceletmaker-paint] yarn link"
 yarn link
 
-echo "cd ~/Desktop/braceletmaker/braceletmaker-gui"
-cd ~/Desktop/braceletmaker/braceletmaker-gui
+echo "cd ~/Desktop/HapticSynaptic/braceletmaker-gui"
+cd ~/Desktop/HapticSynaptic/braceletmaker-gui
 echo "[braceletmaker-gui] rm -rf node_modules"
 rm -rf node_modules
 # unstage package-lock.json
@@ -104,8 +101,8 @@ yarn link braceletmaker-l10n braceletmaker-blocks braceletmaker-vm braceletmaker
 echo "[braceletmaker-gui] yarn link"
 yarn link
 
-echo "cd ~/Desktop/braceletmaker/braceletmaker-desktop"
-cd ~/Desktop/braceletmaker/braceletmaker-desktop
+echo "cd ~/Desktop/HapticSynaptic/braceletmaker-desktop"
+cd ~/Desktop/HapticSynaptic/braceletmaker-desktop
 echo "[braceletmaker-desktop] npm install electron-builder@23.0.2"
 npm install electron-builder@23.0.2
 echo "[braceletmaker-desktop] rm -rf node_modules"
