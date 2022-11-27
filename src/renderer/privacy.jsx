@@ -6,7 +6,9 @@ const PrivacyElement = () => (
     <div className={styles.privacyBox}>
         <h1>Privacy Policy</h1>
 
-        <p>We believe the best privacy policy is the one we don't have to write. We don't collect, process, use, or share any of your information.</p>
+        <p>We believe that the best privacy policy is one we don't have to write.</p>
+
+        <p>We don't collect, process, use, or share any of your information.</p>
 
         <p>This means no analytics, no error reporting, no telemetry, nothing. Zero. Zip. Zilch. <span lang="es">Nada.</span></p>
 

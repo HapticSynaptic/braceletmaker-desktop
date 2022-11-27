@@ -16,7 +16,8 @@ module.exports = defaultConfig =>
             babelPaths: [
                 path.resolve(__dirname, 'src', 'renderer'),
                 /node_modules[\\/]+scratch-[^\\/]+[\\/]+src/,
-                /node_modules[\\/]+braceletmaker-[^\\/]+[\\/]+src/,
+                /node_modules[\\/]+openblock-[^\\/]+[\\/]+src/,
+                /node_modules[\\/]+@hapticsynaptic\/braceletmaker-[^\\/]+[\\/]+src/,
                 /node_modules[\\/]+pify/,
                 /node_modules[\\/]+@vernier[\\/]+godirect/
             ],

@@ -25,7 +25,8 @@ Install Homebrew by executing the following command in the Terminal:
 
 You will be asked to confirm installation and around a minute later you will be asked for your password. Installation lasts around 20 mins.
 
-The command above will also install Xcode command line tools that are needed later in the setup process.
+It seems you first need to install Xcode command line tools **BEFORE** installing Homebrew!
+~~The command above will also install Xcode command line tools that are needed later in the setup process.~~
 
 ### Installing `git`
 
@@ -144,7 +145,7 @@ To make changes to `braceletmaker-gui`, `braceletmaker-blocks`, and `braceletmak
 zsh ~/Desktop/HapticSynaptic/braceletmaker-desktop/install-dependencies.sh
 ```
 
-2. Run `npm run build:dev` to prep the "dist" folder for development. You will need to re-run this command after every production build in order to return "dist" folder to development state.
+2. Run `npm run build` to prep the `dist` folder for development. You will need to re-run this command after every production build in order to return `dist` folder to development state.
 
 3. Run `npm start` to start the development environment. If the app fails to run with "Initialize resources failed" error modal and terminal output contains `WARN: Check resources failed, try to initialize resources:` then you need to redo steps 5, 6, and 7 from [Installing app dependencies](#installing-app-dependencies).
 
