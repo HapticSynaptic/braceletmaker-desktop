@@ -32,14 +32,10 @@ echo "cd ~/Desktop/HapticSynaptic/braceletmaker-l10n"
 cd ~/Desktop/HapticSynaptic/braceletmaker-l10n
 echo "[braceletmaker-l10n] rm -rf node_modules"
 rm -rf node_modules
-# unstage package-lock.json
-echo "[braceletmaker-l10n] git reset -q HEAD -- package-lock.json"
-git reset -q HEAD -- package-lock.json
-# revert package-lock.json
-echo "[braceletmaker-l10n] git checkout -q -- package-lock.json"
-git checkout -q -- package-lock.json
-echo "[braceletmaker-l10n] npm install"
-npm install
+echo "[braceletmaker-l10n] rm package-lock-json"
+rm package-lock.json
+echo "[braceletmaker-l10n] npm install --legacy-peer-deps"
+npm install --legacy-peer-deps
 echo "[braceletmaker-l10n] npm run build"
 npm run build
 echo "[braceletmaker-l10n] yarn link"
@@ -49,14 +45,10 @@ echo "cd ~/Desktop/HapticSynaptic/braceletmaker-blocks"
 cd ~/Desktop/HapticSynaptic/braceletmaker-blocks
 echo "[braceletmaker-blocks] rm -rf node_modules"
 rm -rf node_modules
-# unstage package-lock.json
-echo "[braceletmaker-blocks] git reset -q HEAD -- package-lock.json"
-git reset -q HEAD -- package-lock.json
-# revert package-lock.json
-echo "[braceletmaker-blocks] git checkout -q -- package-lock.json"
-git checkout -q -- package-lock.json
-echo "[braceletmaker-blocks] npm install"
-npm install
+echo "[braceletmaker-blocks] rm package-lock-json"
+rm package-lock.json
+echo "[braceletmaker-blocks] npm install --legacy-peer-deps"
+npm install --legacy-peer-deps
 echo "[braceletmaker-blocks] yarn link @hapticsynaptic/braceletmaker-l10n"
 yarn link @hapticsynaptic/braceletmaker-l10n
 echo "[braceletmaker-blocks] yarn link"
@@ -66,14 +58,10 @@ echo "cd ~/Desktop/HapticSynaptic/braceletmaker-vm"
 cd ~/Desktop/HapticSynaptic/braceletmaker-vm
 echo "[braceletmaker-vm] rm -rf node_modules"
 rm -rf node_modules
-# unstage package-lock.json
-echo "[braceletmaker-vm] git reset -q HEAD -- package-lock.json"
-git reset -q HEAD -- package-lock.json
-# revert package-lock.json
-echo "[braceletmaker-vm] git checkout -q -- package-lock.json"
-git checkout -q -- package-lock.json
-echo "[braceletmaker-vm] npm install"
-npm install
+echo "[braceletmaker-vm] rm package-lock-json"
+rm package-lock.json
+echo "[braceletmaker-vm] npm install --legacy-peer-deps"
+npm install --legacy-peer-deps
 echo "[braceletmaker-vm] yarn link @hapticsynaptic/braceletmaker-l10n"
 yarn link @hapticsynaptic/braceletmaker-l10n
 echo "[braceletmaker-vm] yarn link"
@@ -83,14 +71,10 @@ echo "cd ~/Desktop/HapticSynaptic/braceletmaker-paint"
 cd ~/Desktop/HapticSynaptic/braceletmaker-paint
 echo "[braceletmaker-paint] rm -rf node_modules"
 rm -rf node_modules
-# unstage package-lock.json
-echo "[braceletmaker-paint] git reset -q HEAD -- package-lock.json"
-git reset -q HEAD -- package-lock.json
-# revert package-lock.json
-echo "[braceletmaker-paint] git checkout -q -- package-lock.json"
-git checkout -q -- package-lock.json
-echo "[braceletmaker-paint] npm install"
-npm install
+echo "[braceletmaker-paint] rm package-lock-json"
+rm package-lock.json
+echo "[braceletmaker-paint] npm install --legacy-peer-deps"
+npm install --legacy-peer-deps
 echo "[braceletmaker-paint] npm run build"
 npm run build
 echo "[braceletmaker-paint] yarn link"
@@ -100,14 +84,10 @@ echo "cd ~/Desktop/HapticSynaptic/braceletmaker-gui"
 cd ~/Desktop/HapticSynaptic/braceletmaker-gui
 echo "[braceletmaker-gui] rm -rf node_modules"
 rm -rf node_modules
-# unstage package-lock.json
-echo "[braceletmaker-gui] git reset -q HEAD -- package-lock.json"
-git reset -q HEAD -- package-lock.json
-# revert package-lock.json
-echo "[braceletmaker-gui] git checkout -q -- package-lock.json"
-git checkout -q -- package-lock.json
-echo "[braceletmaker-gui] npm install"
-npm install
+echo "[braceletmaker-gui] rm package-lock-json"
+rm package-lock.json
+echo "[braceletmaker-gui] npm install --legacy-peer-deps"
+npm install --legacy-peer-deps
 echo "[braceletmaker-gui] yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-blocks @hapticsynaptic/braceletmaker-vm @hapticsynaptic/braceletmaker-paint"
 yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-blocks @hapticsynaptic/braceletmaker-vm @hapticsynaptic/braceletmaker-paint
 echo "[braceletmaker-gui] yarn link"
@@ -115,20 +95,14 @@ yarn link
 
 echo "cd ~/Desktop/HapticSynaptic/braceletmaker-desktop"
 cd ~/Desktop/HapticSynaptic/braceletmaker-desktop
-echo "[braceletmaker-desktop] npm install electron-builder@23.0.2"
-npm install electron-builder@23.0.2
+echo "[braceletmaker-desktop] npm install --legacy-peer-deps electron-builder@23.0.2"
+npm install --legacy-peer-deps electron-builder@23.0.2
 echo "[braceletmaker-desktop] rm -rf node_modules"
 rm -rf node_modules
-# unstage package-lock.json
-echo "[braceletmaker-desktop] git reset -q HEAD -- package-lock.json"
-git reset -q HEAD -- package-lock.json
-# revert package-lock.json
-echo "[braceletmaker-desktop] git checkout -q -- package-lock.json"
-git checkout -q -- package-lock.json
-# echo "npm install monaco-editor@0.15.6"
-# npm install monaco-editor@0.15.6
-echo "[braceletmaker-desktop] npm install"
-npm install
+echo "[braceletmaker-desktop] rm package-lock-json"
+rm package-lock.json
+echo "[braceletmaker-desktop] npm install --legacy-peer-deps"
+npm install --legacy-peer-deps
 echo "[braceletmaker-desktop] yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-gui"
 yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-gui
 
@@ -146,5 +120,5 @@ echo "rm -rf Data"
 rm -rf Data
 echo "mkdir Data"
 mkdir Data
-echo "cp ~/Desktop/HapticSynaptic/external-resources ~/Library/Application\ Support/Electron/Data"
-cp ~/Desktop/HapticSynaptic/external-resources ~/Library/Application\ Support/Electron/Data
+echo "cp -r ~/Desktop/HapticSynaptic/external-resources ~/Library/Application\ Support/Electron/Data"
+cp -r ~/Desktop/HapticSynaptic/external-resources ~/Library/Application\ Support/Electron/Data
