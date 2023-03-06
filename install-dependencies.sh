@@ -9,6 +9,8 @@ echo "git clone https://github.com/HapticSynaptic/braceletmaker-vm.git ~/Desktop
 git clone https://github.com/HapticSynaptic/braceletmaker-vm.git ~/Desktop/HapticSynaptic
 echo "git clone https://github.com/HapticSynaptic/braceletmaker-gui.git ~/Desktop/HapticSynaptic"
 git clone https://github.com/HapticSynaptic/braceletmaker-gui.git ~/Desktop/HapticSynaptic
+echo "git clone https://github.com/HapticSynaptic/braceletmaker-link.git ~/Desktop/HapticSynaptic"
+git clone https://github.com/HapticSynaptic/braceletmaker-link.git ~/Desktop/HapticSynaptic
 echo "git clone https://github.com/HapticSynaptic/braceletmaker-paint.git ~/Desktop/HapticSynaptic"
 git clone https://github.com/HapticSynaptic/braceletmaker-paint.git ~/Desktop/HapticSynaptic
 
@@ -93,6 +95,17 @@ yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-block
 echo "[braceletmaker-gui] yarn link"
 yarn link
 
+echo "cd ~/Desktop/HapticSynaptic/braceletmaker-link"
+cd ~/Desktop/HapticSynaptic/braceletmaker-link
+echo "[braceletmaker-link] rm -rf node_modules"
+rm -rf node_modules
+echo "[braceletmaker-link] rm package-lock-json"
+rm package-lock.json
+echo "[braceletmaker-link] npm install --legacy-peer-deps"
+npm install --legacy-peer-deps
+echo "[braceletmaker-link] yarn link"
+yarn link
+
 echo "cd ~/Desktop/HapticSynaptic/braceletmaker-desktop"
 cd ~/Desktop/HapticSynaptic/braceletmaker-desktop
 echo "[braceletmaker-desktop] npm install --legacy-peer-deps electron-builder@23.0.2"
@@ -103,8 +116,8 @@ echo "[braceletmaker-desktop] rm package-lock-json"
 rm package-lock.json
 echo "[braceletmaker-desktop] npm install --legacy-peer-deps"
 npm install --legacy-peer-deps
-echo "[braceletmaker-desktop] yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-gui"
-yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-gui
+echo "[braceletmaker-desktop] yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-gui @hapticsynaptic/braceletmaker-link"
+yarn link @hapticsynaptic/braceletmaker-l10n @hapticsynaptic/braceletmaker-gui @hapticsynaptic/braceletmaker-link
 
 echo "npm run fetch:all"
 npm run fetch:all

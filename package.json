@@ -3,7 +3,7 @@
   "productName": "Bracelet Maker",
   "description": "Bracelet Maker is a programmable robot toy tailored to girls' interests",
   "author": "Haptic Synaptic",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
@@ -14,8 +14,8 @@
     "compile": "mkdirp ./dist && electron-webpack --bail --display-error-details --env.minify=false --no-progress",
     "fetch:drivers": "rimraf ./drivers && node scripts/download-driver.js",
     "fetch:exts": "rimraf ./external-resources && node ./node_modules/openblock-resource/script/download.js  --repo=openblockcc/external-resources-v2",
-    "fetch:firmwares": "rimraf ./firmwares && node ./node_modules/openblock-link/script/download-firmwares.js",
-    "fetch:tools": "rimraf ./tools && node ./node_modules/openblock-link/script/download-tools.js",
+    "fetch:firmwares": "rimraf ./firmwares && node ./node_modules/@hapticsynaptic/braceletmaker-link/script/download-firmwares.js",
+    "fetch:tools": "rimraf ./tools && node ./node_modules/@hapticsynaptic/braceletmaker-link/script/download-tools.js",
     "fetch:all": "npm run fetch:drivers && npm run fetch:exts && npm run fetch:firmwares && npm run fetch:tools",
     "build": "npm run build:dev",
     "build:dev": "npm run compile && npm run doBuild -- --mode=dev",
@@ -34,8 +34,8 @@
     "url": "github:HapticSynaptic/braceletmaker-desktop"
   },
   "dependencies": {
+    "@hapticsynaptic/braceletmaker-link": "1.8.0",
     "bytes": "^3.1.2",
-    "openblock-link": "^0.2.0-prerelease.20220404092817",
     "openblock-resource": "^0.2.0-prerelease.20220305165916",
     "postinstall": "^0.7.4",
     "source-map-support": "^0.5.19"
@@ -49,8 +49,8 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
     "@electron/remote": "^2.0.5",
-    "@hapticsynaptic/braceletmaker-gui": "1.7.0",
-    "@hapticsynaptic/braceletmaker-l10n": "1.7.0",
+    "@hapticsynaptic/braceletmaker-gui": "1.8.0",
+    "@hapticsynaptic/braceletmaker-l10n": "1.8.0",
     "async": "^3.2.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",

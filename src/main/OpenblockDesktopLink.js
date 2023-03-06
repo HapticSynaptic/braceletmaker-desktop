@@ -7,7 +7,7 @@ import ElectronStore from 'electron-store';
 
 import compareVersions from 'compare-versions';
 
-import OpenBlockLink from 'openblock-link';
+import OpenBlockLink from '@hapticsynaptic/braceletmaker-link';
 import OpenblockResourceServer from 'openblock-resource';
 
 class OpenblockDesktopLink {

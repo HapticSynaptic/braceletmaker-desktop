@@ -2,6 +2,7 @@ directories:
   buildResources: buildResources
   output: dist
 extraFiles: ['LICENSE', 'LICENSE.ScratchFoundation', 'TRADEMARK', "tools", "external-resources", 'firmwares', "drivers"]
+npmRebuild: false
 
 appId: braceletmaker.desktop
 productName: "Bracelet Maker"
@@ -11,7 +12,7 @@ fileAssociations:
   ext: bm
   name: Bracelet Maker project file
   role: Editor
-  icon: buildResources/logo.ico
+  icon: buildResources/BraceletMaker.ico
 
 mac:
   category: public.app-category.education
@@ -32,7 +33,7 @@ dmg:
   title: "Bracelet_Maker-${version}"
 
 win:
-  icon: buildResources/logo.ico
+  icon: buildResources/BraceletMaker.ico
   target:
     - nsis
 
