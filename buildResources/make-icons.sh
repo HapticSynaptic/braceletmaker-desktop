@@ -3,7 +3,7 @@
 # the .svg file needs to have width and height attributes set to "1024" otherwise the icons will be pixelated
 SRC=mac-icon.svg
 OUT_ICONSET=BraceletMaker.iconset
-OUT_ICNS=logo.icns
+OUT_ICNS=BraceletMaker.icns
 OUT_ICO=BraceletMaker.ico
 TMP_ICO=tmp
 

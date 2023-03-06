@@ -24,7 +24,7 @@ mac:
         This app requires microphone access when recording sounds or detecting loudness.
   gatekeeperAssess: true
   hardenedRuntime: true
-  icon: buildResources/logo.icns
+  icon: buildResources/BraceletMaker.icns
   provisioningProfile: embedded.provisionprofile
   artifactName: "Bracelet_Maker-${version}.${ext}"
   target:
